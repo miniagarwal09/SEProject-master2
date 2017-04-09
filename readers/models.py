@@ -5,10 +5,12 @@ from django.contrib.auth.models import User
 
 class Genre(models.Model):
     genre_name = models.CharField(max_length=30)
-    genre_logo = models.ImageField(default="no_image.jpg")
+    genre_logo = models.ImageField(default="no_image.png")
 
     def __str__(self):
         return self.genre_name
+
+
 
 
 class MyBook(models.Model):
@@ -28,7 +30,7 @@ class MyBook(models.Model):
 
 
 class Reader(models.Model):
-
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     favourite_genre = models.ManyToManyField(Genre, default=None)
     about_reader = models.CharField(max_length=100, default=None)
     books_read = models.ManyToManyField(MyBook, default=None, through='ReadingDetails')
@@ -37,7 +39,7 @@ class Reader(models.Model):
     reader_profile_picture = models.FileField(default=None)
 
     def __str__(self):
-        return self.dob
+        return self.user.username
 
 
 class ReadingDetails(models.Model):

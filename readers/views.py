@@ -18,6 +18,8 @@ email_re= re.compile(r"^[\S]+@[\S]+.[\S]+$")
 
 
 
+
+
 def books_in_genre(request,genre_id):
     genre=Genre.objects.get(pk=genre_id)
     books=genre.mybook_set.all()
