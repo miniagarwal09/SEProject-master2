@@ -1,0 +1,71 @@
+body {
+
+    background-image: url("images/homepage.jpg");
+    height: 1000px;
+    background-size: cover;
+}
+.form_body{
+    margin: 50px;
+    padding: 10px;
+}
+.album_detail{
+    color: snow;
+    text-align: center;
+}
+.navbar {
+    border-radius: 0;
+}
+.navbar-brand {
+    font-family: 'Griffy', cursive;
+}
+.img-thumbnail{
+    color: snow;
+}
+
+.main {
+    padding: 10px;
+    margin-top: 10%;
+}
+.songs{
+    background-color: snow;
+    padding: 5px 20px 20px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.genre_logo{
+
+    display: block;
+    width: 250px;
+    height:250px;
+}
+.albums{
+    text-align: center;
+}
+.album_name{
+    font-size: large;
+    color:ghostwhite;
+    font-family: 'Roboto', sans-serif;
+}
+@media(max-width: 300px) {
+    .album_logo{
+        height: 200px;
+        width: 200px;
+    }
+
+}
+.navbar-default{
+    background-color:beige;
+}
+.row{
+    margin: 20px;
+}
+div>a:hover{
+    text-decoration: none;
+}
+#topnavbar {
+    font-family: 'Slabo 27px', serif;
+}
+.error-style{
+    color: red;
+
+}

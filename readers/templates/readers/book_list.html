@@ -1,0 +1,18 @@
+{% extends "readers/base.html" %}
+{% block body %}
+    <div class="main panel">
+    {% if books %}
+        <table>
+        {% for book in books %}
+            <tr>
+            <td rowspan="2"><img src="{{ book.cover.url }}" class="img-thumbnail" height="100px" width="100px"></td>
+                <td><a href="{% url "readers:book_detail" book.isbn%}">{{ book.book_name }}</a></td>
+            </tr>
+            <tr><td>{{ book.author }}</td></tr>
+        {% endfor %}
+        </table>
+    {% else %}
+    <h1>Sorry no books in this genre :(</h1>
+    {% endif %}
+    </div>
+{% endblock %}

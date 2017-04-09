@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Griffy" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy|Roboto|slabo+27px|cinzel" rel="stylesheet">
+    <link type="text/css" href="{% static "reader/style.css" %}" rel="stylesheet">
+    <script type="text/javascript" ></script>
+    <meta charset="UTF-8">
+    <title>{% block title %}BookMania{% endblock %}</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topnavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="navbar-header">
+            <a href="{% url "readers:homepage" %}" class="navbar-brand">BookMania</a>
+        </div>
+        <div class="collapse navbar-collapse " id="topnavbar">
+            <ul class="navbar-nav nav">
+                <li class="{% block active_albums %}active{% endblock %}">
+                    <a href="">
+                        <span class="glyphicon glyphicon-cd"></span>&nbsp;Home
+                    </a>
+                </li>
+            </ul>
+            <form action="#" class="navbar-form navbar-left" method="get" role="search">
+                <div class="form-group">
+                    <label>
+                         <input type="text" class="form-control" name="search">&nbsp;
+                    </label>
+                    <button type="submit" class="btn btn-default">Search!</button>
+                </div>
+            </form>
+            <ul class="navbar-nav nav navbar-right">
+                <li class="{% block active_add_album %}{% endblock %}">
+                {% if user.is_authenticated %}
+                     <a href="{% url "readers:logout" %}" >
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;Logout
+                    </a>
+                    {% else %}
+                    <a href="{% url "readers:signupform" %}">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp;Sign Up
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url "readers:login"%}">
+                        <span class="glyphicon glyphicon-off"></span>&nbsp;Sign In
+                    </a>
+                </li>
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block body %}
+{% endblock %}
+
+
+</body>
+</html>

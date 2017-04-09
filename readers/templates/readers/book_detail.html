@@ -1,0 +1,10 @@
+{% extends "readers/base.html" %}
+{% block body %}
+    <div class="main panel">
+        <h1>Book details are shown here!</h1>
+        <img src="{{ book.cover.url }}">
+        <h2>{{ book.book_name }} has ISBN {{ book.isbn }}</h2>
+
+
+    </div>
+{% endblock %}
