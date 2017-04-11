@@ -4,6 +4,18 @@ Home
 {% endblock %}
 {% block body %}
     <div class="main panel">
-        Welcome {{ reader.user.first_name }}
+    {% if text_reviews %}
+        <h1>Your Reviews</h1>
+        {% for review in text_reviews %}
+            <br>
+            <div class="panel ">
+                <a href="{% url "readers:book_detail" review.book.isbn %}"> {{ review.book.book_name }}</a>
+                {{ review.review }}
+            </div>
+        {% endfor %}
+    {% else %}
+        Welcome {{ reader.user.first_name }}<br>
+        <h2>All your posted Reviews will be shown here</h2>
+    {% endif %}
     </div>
 {% endblock %}

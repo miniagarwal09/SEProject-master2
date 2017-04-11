@@ -27,7 +27,7 @@
             <ul class="navbar-nav nav">
                 <li class="{% block active_albums %}active{% endblock %}">
                 {% if user.is_authenticated %}
-                    <a href="">
+                    <a href="{% url "readers:home" %}">
                         <span class="glyphicon glyphicon-cd"></span>&nbsp;Home
                     </a>
                 {% endif %}

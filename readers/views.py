@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from models import Genre, MyBook, Reader, Text_Review
+from models import Genre, MyBook, Reader, Text_Review, Video_Review
 from django.core.urlresolvers import reverse_lazy,reverse
 from django.contrib.auth.models import User,Permission
 from django.contrib.auth import login, logout
@@ -129,8 +129,8 @@ def signup(request):
 
 def home(request):
     reader = request.user.reader
-    text_reviews = Reader.objects.get(pk=reader.id)
-    video_reviews = Reader.objects.get(pk=reader.id)
+    text_reviews = Text_Review.objects.filter(reader=reader)
+    video_reviews = Video_Review.objects.filter(reader=reader)
     return render(request, "readers/home.html", {'reader': reader,
                                                  'text_reviews': text_reviews,
                                                  'video_reviews': video_reviews})
