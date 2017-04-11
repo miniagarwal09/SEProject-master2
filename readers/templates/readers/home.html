@@ -1,0 +1,9 @@
+{% extends "readers/base.html" %}
+{% block title %}
+Home
+{% endblock %}
+{% block body %}
+    <div class="main panel">
+        Welcome {{ reader.user.first_name }}
+    </div>
+{% endblock %}

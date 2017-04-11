@@ -1,0 +1,15 @@
+{% extends "readers/base.html"%}
+{% block title %}
+    Add  TextReview
+{% endblock %}
+{% block body %}
+    <div class="main panel">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Post">
+    </form>
+    </div>
+{% endblock %}

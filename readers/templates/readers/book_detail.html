@@ -1,10 +1,27 @@
 {% extends "readers/base.html" %}
 {% block body %}
     <div class="main panel">
-        <h1>Book details are shown here!</h1>
-        <img src="{{ book.cover.url }}">
-        <h2>{{ book.book_name }} has ISBN {{ book.isbn }}</h2>
-
-
+        <h1>{{ book.book_name }}</h1>
+        <img src="{{ book.cover.url }}" class="img-thumbnail genre_logo">
+    </div>
+    <div class="main panel">
+    {% if user.is_authenticated %}
+        {% if book_review_by_user %}
+                    <h2>Review by {{ user.first_name }}</h2>
+                    {{ book_review_by_user.review }}
+            {% else %}
+            <a href="{% url "readers:text_review" book_id=book.isbn %}">Post a Review</a>
+        {% endif %}
+        {% else %}
+            <h3>Sign in or Sign up to post a Review</h3>
+    {% endif %}
+    {% if book_reviews %}
+    <h3>All Reviews</h3>
+    {% for review in book_reviews %}
+        <br>{{ review.review }}
+    {% endfor %}
+    {% else %}
+        <h4>No Reviews Posted on this book</h4>
+    {% endif %}
     </div>
 {% endblock %}
